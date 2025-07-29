@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Stop the 4-to_infinity_and_beyond script without using kill or killall
+
+pids=$(pgrep -f 4-to_infinity_and_beyond)
+
+if [[ -z "$pids" ]]; then
+  echo "No 4-to_infinity_and_beyond process found."
+  exit 0
+fi
+
+for pid in $pids; do
+  # Use perl to send SIGTERM (signal 15) to the pid
+  perl -e "kill 15, $pid;"
+done
