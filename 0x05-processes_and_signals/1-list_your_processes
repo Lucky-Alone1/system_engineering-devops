@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# List all processes with full command, user (UID), and hierarchy
+# This script lists all running processes with UID, command, and process hierarchy
 
-ps axo uid,pid,ppid,stime,cmd --forest
+ps -axo uid,cmd --forest
