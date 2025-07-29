@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# 8-beheaded_process: Force kill 7-highlander process using SIGKILL (signal 9)
+
+pids=$(pgrep -f 7-highlander)
+
+if [[ -z "$pids" ]]; then
+  echo "No 7-highlander process found."
+  exit 0
+fi
+
+for pid in $pids; do
+  # Send SIGKILL (signal 9) using perl kill function to avoid using kill command directly
+  perl -e "kill 9, $pid;"
+done
