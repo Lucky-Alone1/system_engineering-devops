@@ -1,10 +1,4 @@
 #!/usr/bin/env bash
-# Display PID and full path of all processes whose name contains "bash"
+# Script that displays the PID and process name of all processes containing "bash"
 
-for pid in $(pgrep bash); do
-    # readlink on /proc/PID/exe gives the full path of the executable
-    exe_path=$(readlink -f /proc/"$pid"/exe 2>/dev/null)
-    if [[ -n "$exe_path" ]]; then
-        echo "$pid $exe_path"
-    fi
-done
+pgrep -l bash
