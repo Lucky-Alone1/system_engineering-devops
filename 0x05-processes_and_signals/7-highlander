@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
-# 7-highlander: Infinite loop that traps SIGTERM and prints a message instead of terminating
+# Script that stops the 7-highlander process by sending SIGTERM
 
-trap 'echo "I am invincible!!!"' SIGTERM
-
-while true; do
-  echo "To infinity and beyond"
-  sleep 2
-done
+pkill -f 7-highlander
