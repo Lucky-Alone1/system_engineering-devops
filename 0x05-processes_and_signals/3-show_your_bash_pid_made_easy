@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
-# Display PID and process name for all processes containing "bash"
+# Display PID and full path of all processes whose name contains "bash"
 
-pgrep -a bash | awk '{print $1, $2}'
+for pid in $(pgrep bash); do
+    if exe_path=$(readlink /proc/"$pid"/exe 2>/dev/null); then
+        echo "$pid $exe_path"
+    fi
+done
